@@ -1,11 +1,12 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
-const { usuariosPost } = require("../controllers/usuarios");
+const { usuariosPost, usuariosPut } = require("../controllers/usuarios");
 const { esRoleValido, esEmailValido } = require("../helpers/db-validators");
 const { validarCampos } = require("../middlewares/validar-campos");
 
 const router = Router();
 
+router.put("/:id", usuariosPut);
 router.post(
   "/",
   [
