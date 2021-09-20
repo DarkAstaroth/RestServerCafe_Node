@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
-const { usuariosPost, usuariosPut } = require("../controllers/usuarios");
+const { usuariosPost, usuariosPut, usuarioGet } = require("../controllers/usuarios");
 const {
   esRoleValido,
   esEmailValido,
@@ -9,6 +9,11 @@ const {
 const { validarCampos } = require("../middlewares/validar-campos");
 
 const router = Router();
+
+router.get(
+  "/",
+  usuarioGet
+);
 
 router.put(
   "/:id",
