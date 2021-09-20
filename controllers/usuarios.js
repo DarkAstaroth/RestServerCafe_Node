@@ -49,8 +49,23 @@ const usuariosPut = async (req = request, res = response) => {
   res.json(usuario);
 };
 
+const usuariosDelete = async (req = request, res = response) => {
+  const { id } = req.params;
+
+  // Eliminar fisicamente
+  //const usuario = await Usuario.findByIdAndDelete(id);
+
+  const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+
+  res.json({
+    id,
+    usuario,
+  });
+};
+
 module.exports = {
   usuarioGet,
   usuariosPost,
   usuariosPut,
+  usuariosDelete,
 };
