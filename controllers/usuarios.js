@@ -23,7 +23,7 @@ const usuariosPost = async (req = request, res = response) => {
 
 const usuariosPut = async (req = request, res = response) => {
   const { id } = req.params;
-  const { password, google, correo, ...resto } = req.body;
+  const { _id, password, google, correo, ...resto } = req.body;
 
   // Validar contra base de datos
   if (password) {
@@ -36,7 +36,7 @@ const usuariosPut = async (req = request, res = response) => {
 
   res.json({
     msg: "put API - usuariosPut",
-    usuario
+    usuario,
   });
 };
 

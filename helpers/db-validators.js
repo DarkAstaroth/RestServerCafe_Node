@@ -17,7 +17,16 @@ const esEmailValido = async (correo = "") => {
   }
 };
 
+// Verificar si exite el id de un usuario
+const esUsuarioValido = async (id) => {
+  const existeUsuario = await Usuario.findById(id);
+  if (!existeUsuario) {
+    throw new Error(`El usuario con id :  ${id} no existe`);
+  }
+};
+
 module.exports = {
   esRoleValido,
   esEmailValido,
+  esUsuarioValido,
 };
