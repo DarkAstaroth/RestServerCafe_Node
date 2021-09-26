@@ -11,6 +11,7 @@ const {
   esEmailValido,
   esUsuarioValido,
 } = require("../helpers/db-validators");
+const { validarJWT } = require("../middlewares/valida-jwt");
 const { validarCampos } = require("../middlewares/validar-campos");
 
 const router = Router();
@@ -47,6 +48,7 @@ router.post(
 router.delete(
   "/:id",
   [
+    validarJWT,
     check("id", "El id no es valido").isMongoId(),
     check("id").custom(esUsuarioValido),
     validarCampos,
