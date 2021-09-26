@@ -14,7 +14,7 @@ const {
 
 const { validarJWT } = require("../middlewares/valida-jwt");
 const { validarCampos } = require("../middlewares/validar-campos");
-const { esAdminRol } = require("../middlewares/validar-roles");
+const { esAdminRol, tieneRol } = require("../middlewares/validar-roles");
 
 const router = Router();
 
@@ -51,7 +51,8 @@ router.delete(
   "/:id",
   [
     validarJWT,
-    esAdminRol,
+    // esAdminRol, a fuerza debe ser un administrador para realizar la accion
+    tieneRol("ADMIN_ROLE", "VENTAS_ROLE"), // debe ser uno de los roles enviados para realizar la tarea
     check("id", "El id no es valido").isMongoId(),
     check("id").custom(esUsuarioValido),
     validarCampos,
