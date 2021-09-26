@@ -12,9 +12,12 @@ const {
   esUsuarioValido,
 } = require("../helpers/db-validators");
 
-const { validarJWT } = require("../middlewares/valida-jwt");
-const { validarCampos } = require("../middlewares/validar-campos");
-const { esAdminRol, tieneRol } = require("../middlewares/validar-roles");
+const {
+  validarCampos,
+  validarJWT,
+  esAdminRol,
+  tieneRol,
+} = require("../middlewares");
 
 const router = Router();
 
