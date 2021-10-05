@@ -24,6 +24,7 @@ router.get(
     check("id", "El id es obligatorio").not().isEmpty(),
     check("id", "el id no es valido").isMongoId(),
     check("id").custom(esCategoriaValida),
+    validarCampos,
   ],
   obtenerCategoria
 );
