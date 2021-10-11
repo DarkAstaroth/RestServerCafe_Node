@@ -107,14 +107,12 @@ const mostrarImagen = async (req, res = response) => {
     );
 
     if (fs.existsSync(pathImagen)) {
-      console.log(pathImagen);
       return res.sendFile(pathImagen);
     }
   }
 
-  res.json({
-    msg: "falta placeholder",
-  });
+  const pathImagen = path.join(__dirname, "../assets/no-image.jpg");
+  res.sendFile(pathImagen);
 };
 
 module.exports = {
